@@ -1,0 +1,52 @@
+# 张政童　516030910024
+	.pos 0x0
+	irmovq Stack, %rsp
+	rrmovq %rsp, %rbp
+	call Main
+	halt
+
+	.align 8
+ele1:
+	.quad 0x00a
+	.quad ele2
+ele2:
+	.quad 0x0b0
+	.quad ele3
+ele3:
+	.quad 0xc00
+	.quad 0
+
+Main:
+	pushq %rbp
+	rrmovq %rsp, %rbp
+	irmovq ele1, %rdi
+	call sum_list
+	rrmovq %rbp, %rsp
+	popq %rbp
+	ret
+
+sum_list:
+	pushq %rbp
+	rrmovq %rsp, %rbp
+	xorq %rax, %rax
+	rrmovq %rdi, %rdx
+	irmovq $0, %rcx
+	subq %rcx, %rdx
+	je Ret
+
+Loop:
+	mrmovq (%rdx), %r8
+	addq %r8, %rax
+	mrmovq 0x8(%rdx), %rdx
+	subq %rcx, %rdx
+	jne Loop
+
+Ret:
+	rrmovq %rbp, %rsp
+	popq %rbp
+	ret
+
+	.pos 0x100
+Stack:
+	
+

@@ -1,0 +1,59 @@
+# 张政童　516030910024
+	.pos 0x0
+	irmovq Stack, %rsp
+	rrmovq %rsp, %rbp
+	call Main
+	halt
+
+	.align 8
+# Source block
+src:
+	.quad 0x00a
+	.quad 0x0b0
+	.quad 0xc00
+
+# Destination block
+dest:
+	.quad 0x111
+	.quad 0x222
+	.quad 0x333
+
+Main:
+	pushq %rbp
+	rrmovq %rsp, %rbp
+	irmovq src, %rdi
+	irmovq dest, %rsi
+	irmovq $0x3, %rdx
+	call Copy_block
+	rrmovq %rbp, %rsp
+	popq %rbp
+	ret
+
+Copy_block:
+	pushq %rbp
+	rrmovq %rsp, %rbp
+	xorq %rax, %rax
+	irmovq $0, %r8
+	subq %r8, %rdx
+	jle Ret
+
+Loop:
+	irmovq $0x8, %r9
+	mrmovq (%rdi), %r10
+	rmmovq %r10, (%rsi)
+	xorq %r10, %rax
+	
+	addq %r9, %rdi
+	addq %r9, %rsi
+	irmovq $0x1, %r9
+	subq %r9, %rdx
+	subq %r8, %rdx
+	jg Loop
+
+Ret:
+	rrmovq %rbp, %rsp
+	popq %rbp
+	ret
+	
+	.pos 0x1000
+Stack:

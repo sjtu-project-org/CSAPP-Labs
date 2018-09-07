@@ -1,0 +1,16 @@
+connfd: 17
+GET http://192.168.6.132:36290/8KAK6Ed9cs HTTP/1.1
+
+uri:http://192.168.6.132:36290/8KAK6Ed9cs, hostname:192.168.6.132, path:8KAK6Ed9cs, port:36290
+buf:GET /8KAK6Ed9cs HTTP/1.1
+
+Host: www.google.com
+Connection: keep-alive
+Authorization: Basic YWRta67cYWRtaW4=
+
+c: , l: -1
+response from server:
+response from server c Content-Length:, l 190
+response content: °„‹«F»Ïß¾×·zÿ—¹º-¹j0“™ª-X0<@7½‘d5ûQ…0oÖ^‰m)&ƒ]3†Ş]¦×¿Á¦Šóî9¬ƒÿç¯WõD×P³uÁC 
+N/¼áôÃOÌ§Á$tZ.ÈÊùQß¯i«ïİ)9^UšBñ©….»³#w?`šüŒ¸>Ø6-õdIŞv¼§”hF&TkıÃÔóŠ=¡¤e›úÒõ¡fË-Úäæ
+Ç·0Qñz<X›qˆıì
